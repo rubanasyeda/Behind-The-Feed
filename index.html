@@ -522,6 +522,16 @@ body{background:#DCD9D2; display:flex; align-items:center; justify-content:cente
 .ai-badge,.cr-badge{position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.65); color:#fff; font-size:11px; font-weight:600; padding:3px 8px; border-radius:999px; font-family:'Geist',system-ui,sans-serif; text-shadow:none}
 .cr-badge{left:auto; right:10px; top:10px; bottom:auto; background:rgba(255,255,255,.9); color:#17171A}
 
+.refs{margin-top:6px; display:flex; flex-wrap:wrap; gap:4px 10px; align-items:baseline; font-size:12.5px}
+.refs .fc{margin-top:0}
+.real-head{display:flex; flex-direction:column; gap:2px; padding:10px 14px 8px; border-bottom:1px solid rgba(0,0,0,.08); font-size:13px}
+.real-head span{color:#666; font-size:12px}
+.real-badge{position:absolute; left:10px; top:10px; background:#111; color:#FFD447; font:700 11px/1 system-ui,sans-serif; padding:5px 8px; border-radius:999px; letter-spacing:.02em}
+.ig-img.ig-light .big, .ig-img.ig-light .sm{color:#111; text-shadow:none}
+.ig-img.ig-photo{aspect-ratio:4/5; padding:0; background:#000; overflow:hidden}
+.ig-img.ig-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.ig-orig{display:inline-block; margin-left:4px; font-size:12px; font-weight:600; color:#3b5bdb; text-decoration:none}
+.orig-link{display:block; margin:0 0 10px}
 </style>
 </head>
 <body>
@@ -2294,6 +2304,132 @@ NOTIFS.unshift({app:'scrollr', post:'p9', icon:'#17171A', title:'scrollr', time:
 renderLock(); openApp('lock');
 setInterval(() => { if (currentApp === 'lock') renderLock(); }, 30000);
 
+
+/* ================= REAL POSTS (Instagram, Nov 2026) =================
+   Real public posts, shown as posted. Each claim was checked by hand against the
+   linked reporting. */
+STATUS.matches = ['Matches reporting','st-sourced'];
+STATUS.joke = ['A joke, not a fact claim','st-sourced'];
+STATUS.false = ['False','st-misleading'];
+const REAL = [
+  {id:'r1', real:true, photo:'real/r1.jpg', pos:'50% 50%', url:'https://www.instagram.com/danielsaynt/', name:'danielsaynt', handle:'Instagram · June 10, 2026', av:'#E2DAFF', likes:'2,555', verified:true,
+   img:{bg:'linear-gradient(160deg,#1c2a3a,#3b5574 60%,#6d8fb5)', big:'Mamdani cuts $50M for trans care from New York City budget', sm:'BREAKS PROMISE WITH TRANS ACTIVISTS DURING PRIDE MONTH'},
+   cap:'Promises made. Promises broken. Mayor Mamdani is backtracking on his campaign promise to provide $65M in funding for trans care in NYC, reducing the budget and leaving trans activists without support. In his revised budget only $7.5M will be offered yearly over the next two years, but it’s unclear if this budget is only for hires and marketing of his newly created Mayor’s Office of LGBTQIA+ Affairs and their budget to lie to queer New Yorkers how much the Mayor cares about trans rights.',
+   spice:2,
+   tricks:[{t:'missing',p:'Mamdani cuts $50M for trans care'},{t:'outrage',p:'Promises made. Promises broken.'},{t:'outrage',p:'to lie to queer New Yorkers'},{t:'missing',p:'it’s unclear if this budget is only for hires and marketing'}],
+   plain:'Says the mayor cut $50M for trans care and broke a campaign promise.',
+   claims:[
+     {claim:'Mamdani “cut $50M” for trans care', status:'misleading',
+      note:'The $65M was a campaign pledge, not money already in the budget. The city budgeted $15M over two years and called it a “first step”. So the pledge is far from met, but nothing was taken out of an existing budget.',
+      refs:[{t:'Prism Reports, June 15, 2026',u:'https://prismreports.org/2026/06/15/new-york-state-budget-gender-affirming-care/'},{t:'AllSides roundup, June 15, 2026',u:'https://www.allsides.com/news/2026-06-15-0700/lgbtq-issues-mamdani-looks-expand-access-gender-affirming-care-15-million-investment-taxpayer-funds'}]},
+     {claim:'Only $7.5M a year over the next two years', status:'matches',
+      note:'Matches the $15M over two years the mayor announced in June.',
+      refs:[{t:'Fox News, June 12, 2026',u:'https://www.foxnews.com/politics/mamdani-touts-massive-taxpayer-funded-investment-trans-healthcare-first-step'}]},
+     {claim:'The budget exists “to lie to queer New Yorkers”', status:'opinion',
+      note:'An accusation about motives. The post gives no evidence for it.'}],
+   angles:[{src:'Mayor’s office (via June 12 coverage)',text:'Calls $15M over two years a “first step” toward the $65M pledge.'},
+           {src:'Trans advocates (Prism, Erin in the Morning)',text:'Say the $65M promised on the campaign trail is still missing from the budget.'}]},
+  {id:'r2', real:true, photo:'real/r2.jpg', pos:'50% 55%', url:'https://www.instagram.com/audlovesamerica/', name:'audlovesamerica', handle:'Instagram · Nov 5, 2025', av:'#FFD3CC', likes:'11.5K',
+   img:{bg:'linear-gradient(160deg,#3d2a1f,#8a5a3c 55%,#c98d5b)', big:'if your boyfriend voted for mamdani, sorry but you have a girlfriend', sm:''},
+   cap:'#mamdani #nyciscooked #nyc #mayor #nov4 #vote #democrat #republican #reels #share #viral #fyp',
+   spice:1, tricks:[{t:'usthem',p:'sorry but you have a girlfriend'}],
+   plain:'A joke video mocking men who voted for Mamdani.',
+   claims:[{claim:'Men who voted for Mamdani aren’t “real” boyfriends', status:'joke', note:'Humour, not a claim to check. It does use a group as the punchline, which is the mildest form of us vs. them.'}]},
+  {id:'r3', real:true, photo:'real/r3.jpg', pos:'50% 22%', url:'https://www.instagram.com/abuhgailfaith/', name:'abuhgailfaith', handle:'Instagram · Oct 9, 2026', av:'#CDEFDF', likes:'54.9K',
+   img:{bg:'linear-gradient(160deg,#2b2b33,#55566a 60%,#8a8aa3)', big:'Mamdani is a prime example of why nothing gets done in the United States', sm:''},
+   cap:'Mamdani is a prime example of why nothing gets done in the United States #fyp #zohranmamdani #mamdani #newyork #newyorkcity',
+   spice:1, tricks:[{t:'missing',p:'why nothing gets done'}],
+   plain:'An opinion that the mayor shows why nothing gets done in the U.S.',
+   claims:[{claim:'Nothing gets done under Mamdani', status:'opinion', note:'A sweeping opinion with no example given. The top reply (13.7K likes) argues the opposite. Neither side cites anything.'}]},
+  {id:'r4', real:true, photo:'real/r4.jpg', pos:'50% 50%', url:'https://www.instagram.com/ihavesomethingtosay.co/', name:'ihavesomethingtosay.co', handle:'Instagram · NYC · Nov 18, 2026', av:'#FFE1B3', likes:'11.7K', verified:true,
+   img:{bg:'linear-gradient(160deg,#f4f1ea,#e7e2d8)', big:'mamdani made promises. here’s what he did.', sm:'RENT FREEZE · FREE 2-K · PROTEST UNIT SHUT DOWN · +5 MORE', dark:true},
+   cap:'zohran mamdani, a democratic socialist, became mayor of new york city in january. ten months later, he’s doing something politicians almost never do: keeping his promises. … he isn’t done and we won’t pretend he is. free buses won’t happen this year, library funding fell short of what he promised and the first city-owned grocery store is planned for next year. this is what happens when you elect someone who actually cares. sources: nyc mayor’s office, associated press, cnn',
+   spice:1, backed:true,
+   tricks:[{t:'usthem',p:'politicians almost never do'},{t:'usthem',p:'someone who actually cares'}],
+   plain:'A list of the mayor’s campaign promises and what has happened so far.',
+   claims:[
+     {claim:'Rents frozen for one million apartments', status:'matches', note:'The Rent Guidelines Board froze one- and two-year leases for about 1 million stabilized apartments on June 25, 2026.',
+      refs:[{t:'NY1, June 25, 2026',u:'https://ny1.com/nyc/all-boroughs/news/2026/06/25/nyc-rent-guidelines-board-final-vote'}]},
+     {claim:'Free childcare for 2,000 two-year-olds', status:'matches', note:'2-K launched this fall with just over 2,000 seats; more than 5,700 families applied.',
+      refs:[{t:'NYC Mayor’s Office, Aug 4, 2026',u:'https://www.nyc.gov/mayors-office/news/2026/08/mayor-mamdani-and-governor-hochul-extend-2-k-offers-to-more-than.html'}]},
+     {claim:'The NYPD’s protest unit was shut down', status:'matches', note:'The Strategic Response Group was disbanded on Nov 16, 2026. Police unions strongly object.',
+      refs:[{t:'FOX 5 New York, Nov 2026',u:'https://fox5ny.com/news/nypd-strategic-response-group-disbanded-mamdani-tisch'}]}],
+   angles:[{src:'Supporters',text:'Point to the rent freeze and free 2-K as promises kept.'},
+           {src:'Critics (landlords, police unions)',text:'Say the rent freeze ignores rising building costs and that losing the SRG hurts public safety.'}]},
+  {id:'r5', real:true, photo:'real/r5.jpg', pos:'50% 50%', url:'https://www.instagram.com/federalistpapersproject/', name:'federalistpapersproject', handle:'Instagram · Sept 1, 2026', av:'#D6E7FF', likes:'9,215',
+   img:{bg:'#222', big:'“I AM LEAVING YOU. CANADA WILL NEVER BE AMERICA’S 51ST STATE!” / “XI, WILL YOU HAVE US AS CHINA’S 24TH PROVINCE?”', sm:''},
+   cap:'In the midst of a trade war with the United States, Canada’s Prime Minister Mark Carney said today, “And when the Americans stop doing memes, stop throwing shade, stop trying to be tough, and start being serious about having those discussions, we can have those discussions. Look, it’s not constructive, but that’s their democracy.” So of course we had to throw up a cartoon. … Canada has been taking advantage of the United States over trade for decades. … They may have run to China to end their trade war last year when Trump began imposing tariffs but that deal does not negate the deep need Canada has of the United States. America is waiting. Meanwhile, let the cartoons reign.',
+   spice:2,
+   tricks:[{t:'usthem',p:'Canada has been taking advantage of the United States over trade for decades'},{t:'missing',p:'They may have run to China to end their trade war last year'},{t:'outrage',p:'let the cartoons reign'}],
+   plain:'A cartoon showing Carney walking out on Trump, then kneeling to Xi Jinping to ask to become “China’s 24th province”.',
+   claims:[
+     {claim:'Carney said trade talks can resume when Americans “stop doing memes, stop throwing shade”', status:'matches',
+      note:'Real quote, from Ottawa on Sept 1, 2026. The ending is slightly off: reporters quote him saying “But it’s not constructive.”',
+      refs:[{t:'CTV News, Sept 1, 2026',u:'https://www.ctvnews.ca/politics/article/start-being-serious-carney-message-to-trump-administration-amid-ramped-up-rhetoric/'}]},
+     {claim:'Canada “ran to China to end their trade war last year”', status:'misleading',
+      note:'The Canada–China deal was in January 2026, not last year, and it ended a separate dispute over EV and canola tariffs, not the U.S. trade war. Trump himself said “That’s what he should be doing.”',
+      refs:[{t:'Global News, Jan 16, 2026',u:'https://globalnews.ca/news/11616295/carney-landmark-china-deal-tariffs-quota'},{t:'Reuters via Yahoo, Jan 2026',u:'https://finance.yahoo.com/news/canada-china-set-historic-gains-031629542.html'}]},
+     {claim:'Carney asked to make Canada “China’s 24th province”', status:'unverified',
+      note:'Words put in his mouth by the cartoon. He never said this. Satire, but it reads like a quote.'},
+     {claim:'Canada has taken advantage of the U.S. on trade for decades', status:'opinion',
+      note:'A contested opinion. The post gives no numbers or source.'}],
+   origin:{ai:'possible', label:'none', image:true, signals:['Illustration style common to AI image tools, with no AI label shown','Real leaders drawn saying words they never said','Posted by a partisan meme page, not a news outlet']},
+   angles:[{src:'Carney (CTV, Sept 1)',text:'Says talks can resume once the U.S. drops the trolling and gets serious.'},
+           {src:'U.S. officials (via The Blaze, Sept 2026)',text:'Treasury Secretary Bessent called it “very unfortunate” that Carney turned this into “a political shouting match”.'}]},
+  {id:'r6', real:true, photo:'real/r6.jpg', pos:'50% 50%', site:'X', at:'JoN_TM', url:'https://x.com/JoN_TM/status/2093571757760221580', name:'Гуго Карлович ™', handle:'X · @JoN_TM · translated from Russian', av:'#FFD3CC', likes:'',
+   img:{bg:'#222', big:'Dozens of vessels heading to Lake American have piled up at the entrance to the Welland Canal', sm:''},
+   cap:'FOXnews: Dozens of vessels heading to Lake American have piled up at the entrance to the Welland Canal. Canada is not granting them permission to proceed. Ships that listed Lake Ontario in their documents are passing through the canal without hindrance.',
+   spice:3,
+   tricks:[{t:'missing',p:'FOXnews:'},{t:'threat',p:'Dozens of vessels'},{t:'usthem',p:'Canada is not granting them permission to proceed'}],
+   plain:'Claims Canada is blocking U.S.-bound ships at the Welland Canal over the “Lake America” name.',
+   claims:[
+     {claim:'Canada is blocking ships bound for “Lake America” at the Welland Canal', status:'false',
+      note:'The seaway’s operator said: “Seaway operations are continuing normally and have done so throughout the weekend.”',
+      refs:[{t:'The Canadian Press via CP24, Aug 31, 2026',u:'https://www.cp24.com/news/canada/2026/08/31/fact-file-canada-is-not-blocking-ships-that-refuse-to-honour-lake-ontario-name/'}]},
+     {claim:'Fox News reported this', status:'misleading',
+      note:'No sign of it. Searches of Fox News’s site, Google and the Wayback Machine found nothing. A big name is borrowed to make it look sourced.',
+      refs:[{t:'The Canadian Press via CP24',u:'https://www.cp24.com/news/canada/2026/08/31/fact-file-canada-is-not-blocking-ships-that-refuse-to-honour-lake-ontario-name/'}]}],
+   origin:{ai:'none', label:'none', image:false, signals:['This is the earliest version: an X account that posts satire in Russian and calls itself a “comedian”','Reposted in English on Threads (23K likes), X and Facebook as real news, with the satire lost','The map is a real map, but it shows nothing about ships']},
+   angles:[{src:'Context',text:'Posted right after Trump’s executive order to rename Lake Ontario “Lake America”. A Threads copy (23K likes) dropped the satire and kept the Fox News label.'}]}
+];
+REAL.forEach(p => { p.text = (p.cap.includes(p.img.big) ? '' : p.img.big + ' — ') + (p.img.sm && !p.img.sm.startsWith('VIDEO') ? p.img.sm + '. ' : '') + p.cap; });
+SNAP.unshift(...REAL);
+
+claimsHTML = function(claims){
+  if (!claims || !claims.length) return `<p class="muted" style="margin:0">No factual claims to check in this post.</p>`;
+  return `<div class="truth">${claims.map(c => { const s = STATUS[c.status] || STATUS.unverified;
+    const refs = c.refs && c.refs.length
+      ? `<div class="refs"><span class="muted">Sources:</span> ${c.refs.map(r => `<a class="fc" href="${r.u}" target="_blank" rel="noopener">${esc(r.t)} ↗</a>`).join(' ')}</div>`
+      : (c.status !== 'opinion' && c.status !== 'joke' ? `<a class="fc" href="https://toolbox.google.com/factcheck/explorer/search/${encodeURIComponent(c.claim)}" target="_blank" rel="noopener">Search published fact-checks ↗</a>` : '');
+    return `<div class="claim"><span class="st ${s[1]}">${s[0]}</span><div><b>${esc(c.claim)}</b></div>${c.note ? `<div class="muted">${esc(c.note)}</div>` : ''}${refs}</div>`; }).join('')}</div>`;
+};
+const _backHTML_r = backHTML;
+backHTML = function(o, key){
+  const h = _backHTML_r(o, key);
+  if (!o.real) return h;
+  const src = REAL.find(r => r.text === o.text);
+  const link = src ? `<a class="fc orig-link" href="${src.url}" target="_blank" rel="noopener">${'Original post: @' + esc(src.at || src.name) + ' on ' + (src.site || 'Instagram')} ↗</a>` : '';
+  return h.replace('</span></div>', '</span></div>' + link).replace('>Demo analysis<', '>Real post · checked by our team<').replace('Example angles for this demo post. The full app would pull these from a range of real outlets.', 'Summarised from the linked reporting.');
+};
+const _demoAnalysis_r = demoAnalysis;
+demoAnalysis = p => Object.assign(_demoAnalysis_r(p), {real: !!p.real, angles: p.angles || null});
+
+(() => {
+  const host = $('snapfeed');
+  const head = document.createElement('div'); head.className = 'real-head'; head.id = 'real-head';
+  head.innerHTML = '<b>Real posts</b><span>Real public posts from Instagram. Flip any of them.</span>';
+  const arts = REAL.map(p => { const a = document.createElement('article'); a.className = 'spost ig-post'; a.id = 'post-'+p.id;
+    a.innerHTML = `<div class="flipper"><div class="card"><div class="face front ig-front">${snapFront(p)}</div><div class="face back fs-back ig-back"></div></div></div>`;
+    if (p.photo){ const im = a.querySelector('.ig-img'); im.classList.add('ig-photo'); im.removeAttribute('style'); im.innerHTML = `<img src="${p.photo}" alt="${esc(p.img.big)}" style="object-position:${p.pos}" loading="lazy">`; }
+    if (!p.likes) a.querySelector('.ig-likes')?.remove();
+    a.querySelector('.ig-cap').insertAdjacentHTML('beforeend', ` <a class="ig-orig" href="${p.url}" target="_blank" rel="noopener">${'View on ' + (p.site || 'Instagram') + ' ↗'}</a>`);
+    a.querySelector('.ig-img').insertAdjacentHTML('beforeend', '<span class="real-badge">Real post</span>');
+    return a; });
+  host.prepend(head, ...arts);
+  ORIGINAL.snap = SNAP.map(p => p.id);
+  applyOrder('snap');
+  host.prepend(head);
+})();
 </script>
 </body>
 </html>
